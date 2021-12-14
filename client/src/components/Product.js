@@ -15,10 +15,10 @@ function Product({ product }) {
     }
 
     return (
-        <div className="col-md-6 col-xl-4 p-2" onClick={onProductClicked}>
-            <div className="product h-100" onClick={onProductClicked}>
+        <div className="col-md-6 col-xl-4 p-2">
+            <div className="product h-100 bg-light" onClick={onProductClicked}>
                 <div className="img-container">
-                    <img src={product.imageUrl} alt={product.name} />
+                    <img className="img-thumbnail" src={product.imageUrl} alt={product.name} />
                 </div>
                 <div className="content">
                     <h3 className="title">{product.name}</h3>

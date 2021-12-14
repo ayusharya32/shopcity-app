@@ -49,7 +49,7 @@ function Profile() {
     return (
         <section className="profile">
             {loading ? <Loader /> :
-                <div className="container col-11 col-md-9 col-lg-6 mt-3">
+                <div className="container col-11 col-md-9 col-lg-6 mt-3 mb-3">
                     <h1 className="fs-1">My Profile</h1>
                     <form onSubmit={onUpdateProfileFormSubmitted} className="mt-4">
                         <div class="mb-3">

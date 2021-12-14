@@ -78,7 +78,7 @@ function ProductDetails({ match }) {
                 <div className="container px-5">
                     <div className="flex-container row">
                         <div className="img-container col-12 col-lg-6">
-                            <img class="img-fluid" src={"http://localhost:5000/uploads/productImage1630487018507.jpg"} alt={product.name} />
+                            <img class="img-fluid" src={product.imageUrl} alt={product.name} />
                         </div>
                         <div className="purchase-table col-12 col-lg-6 py-2 container">
                             <table className="table table-striped table-bordered">

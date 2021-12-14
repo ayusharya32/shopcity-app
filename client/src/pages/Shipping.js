@@ -49,7 +49,7 @@ function Shipping({ history }) {
 
     return (
         <section className="shipping">
-            <div className="container col-xl-7">
+            <div className="container col-xl-7 mb-3">
                 <h1 className="mt-4 ms-2">Shipping Address</h1>
                 <form onSubmit={onShippingFormSubmitted} className="mt-4 mx-2 border p-4">
                     <div class="mb-3">
