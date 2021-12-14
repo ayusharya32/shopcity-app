@@ -24,26 +24,38 @@ function CartItem({ cartItem }) {
     }
 
     return (
-        <div className="cart-product">
-            <div className="img-container">
-                <img src={product.imageUrl} alt={product.name} />
+        <div className="border row mx-2 mb-2 py-2 bg-light">
+            <div className="img-container col-sm-3">
+                <img className="img-fluid" src={product.imageUrl} alt={product.name} />
             </div>
-            <h3 className="title">{product.name}</h3>
-            <p className="price">&#8377; {product.price.toLocaleString('en-IN')}</p>
-            <div className="quantity">
-                <select
-                    value={quantity}
-                    onChange={handleQuantityChange}
-                >
-                    {quantityOptionsMarkup}
-                </select>
+            <div className="row col-sm-9">
+                <div className="col-12">
+                    <h3 className="fs-5 mt-1 mb-2"><strong>{product.name}</strong></h3>
+                </div>
+                <div className="col-4 m-auto">
+                    <p className="text-primary">
+                        <strong>&#8377; {product.price.toLocaleString('en-IN')}</strong>
+                    </p>
+                </div>
+                <div className="col-4 m-auto">
+                    <div className="quantity">
+                        <select
+                            value={quantity}
+                            onChange={handleQuantityChange}
+                        >
+                            {quantityOptionsMarkup}
+                        </select>
+                    </div>
+                </div>
+                <div className="col-4 m-auto">
+                    <button 
+                        onClick={onDeleteButtonClicked}
+                        className="btn btn-danger"
+                    >
+                        <i className="fas fa-trash"></i>
+                    </button>
+                </div>
             </div>
-            <button 
-                onClick={onDeleteButtonClicked}
-                className="btn-delete"
-            >
-                <i className="fas fa-trash"></i>
-            </button>
         </div>
     )
 }

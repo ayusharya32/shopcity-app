@@ -28,96 +28,101 @@ function OrderDetails({ match }) {
     }, [])
 
     return (
-        <section className="order-details">
+        <section>
             { loading ? <Loader /> :
                 order &&
-                <div className="container">
-                    <h1>Order Details</h1>
-                    <div className="order-content">
-                        <div className="details">
-                            <table className="shipping">
-                                <thead>
-                                    <tr><th><h3 className="table-title">Shipping</h3></th></tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td className="title">Name:</td>
-                                        <td className="name">{order.user.name}</td>
-                                    </tr>
-                                    <tr>
-                                        <td className="title">Email:</td>
-                                        <td className="email">{order.user.email}</td>
-                                    </tr>
-                                    <tr>
-                                        <td className="title">Address:</td>
-                                        <td className="address">{order.shippingAddress}</td>
-                                    </tr>
-                                    <tr>
-                                        <td className="title">Delivery Status:</td>
-                                        <td 
-                                            style={{color: order.isDelivered ? "green" : "red"}}
-                                            className="delivery">
-                                            {order.isDelivered ? "Delivered" : "Not Delivered"}
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <table className="payment">
-                                <thead>
-                                    <tr><th><h3 className="table-title">Payment</h3></th></tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td className="title">Method:</td>
-                                        <td className="method">{order.paymentMethod}</td>
-                                    </tr>
-                                    <tr>
-                                        <td className="title">Status:</td>
-                                        <td 
-                                            style={{color: order.isPaid ? "green" : "blue"}}
-                                            className="status">
-                                            {order.isPaid ? "Paid" : "Not Paid"}
-                                        </td>
-                                    </tr>
-                                    {order.isPaid &&
+                <div className="container my-2">
+                    <h1 className="my-2">Order Details</h1>
+                    <div className="row">
+                        <div className="col-lg-8">
+                            <div className="shipping col-lg-10">
+                                <table className="table table-striped">
+                                    <thead>
+                                        <tr><th className="px-0"><h3>Shipping</h3></th></tr>
+                                    </thead>
+                                    <tbody>
                                         <tr>
-                                            <td className="title">Paid On:</td>
-                                            <td className="paid-on">{formattedPaymentDate}</td>
+                                            <th scope="row">Name:</th>
+                                            <td>{order.user.name}</td>
                                         </tr>
-                                    }
-                                </tbody>
-                            </table>
-                            <div className="order-items">
-                                <h3 className="table-title">Order Items</h3>
+                                        <tr>
+                                            <th scope="row">Email:</th>
+                                            <td>{order.user.email}</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Address:</th>
+                                            <td>{order.shippingAddress}</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Delivery Status:</th>
+                                            <td 
+                                                style={{color: order.isDelivered ? "green" : "red"}}
+                                                >
+                                                <strong>{order.isDelivered ? "Delivered" : "Not Delivered"}</strong>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div className="payment col-lg-10">
+                                <table className="table table-striped">
+                                    <thead>
+                                        <tr><th className="px-0"><h3>Payment</h3></th></tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row">Method:</th>
+                                            <td>{order.paymentMethod}</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Status:</th>
+                                            <td 
+                                                style={{color: order.isPaid ? "green" : "blue"}}>
+                                                <strong>{order.isPaid ? "Paid" : "Not Paid"}</strong>
+                                            </td>
+                                        </tr>
+                                        {order.isPaid &&
+                                            <tr>
+                                                <th scope="row">Paid On:</th>
+                                                <td>{formattedPaymentDate}</td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div className="order-items col-lg-10">
+                                <h3 className="mt-3 mb-2">Order Items</h3>
                                 {orderItemsMarkup}
                             </div>
                         </div>
-                        <div className="summary-container">
-                            <h3>Order Summary</h3>
-                            <table className="summary">
+                        <div className="summary-container col-lg-4">
+                            <table className="table table-striped">
+                                <thead>
+                                        <tr><th className="px-0"><h3>Order Summary</h3></th></tr>
+                                    </thead>
                                 <tbody>
                                     <tr>
-                                        <td className="title">Item(s) Subtotal</td>
-                                        <td className="order-subtotal">
+                                        <td>Item(s) Subtotal</td>
+                                        <td>
                                             &#8377; {order.totalPrice.toLocaleString('en-IN')}
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td className="title">Shipping</td>
-                                        <td className="order-shipping">
+                                        <td>Shipping</td>
+                                        <td>
                                             &#8377; {order.shippingPrice.toLocaleString('en-IN')}
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td className="title">Tax</td>
-                                        <td className="order-tax">
+                                        <td>Tax</td>
+                                        <td>
                                             &#8377; {order.taxPrice.toLocaleString('en-IN')}
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td className="title">Grand Total</td>
-                                        <td className="order-total">
-                                            &#8377; {grandTotal.toLocaleString('en-IN')}
+                                        <td><strong>Grand Total</strong></td>
+                                        <td>
+                                            <strong>&#8377; {grandTotal.toLocaleString('en-IN')}</strong>
                                         </td>
                                     </tr>
                                 </tbody>

@@ -106,76 +106,84 @@ function PlaceOrder({ history }) {
     }
 
     return (
-        <section className="place-order">
+        <section className="place-order my-4">
             { loading || orderLoading ? <Loader /> : user &&
                 <div className="container">
-                    <h1>Place Order</h1>
-                    <div className="order-content">
-                        <div className="details">
-                            <table className="shipping">
-                                <thead>
-                                    <tr><th><h3 className="table-title">Shipping</h3></th></tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td className="title">Name:</td>
-                                        <td className="name">{user.name}</td>
-                                    </tr>
-                                    <tr>
-                                        <td className="title">Email:</td>
-                                        <td className="email">{user.email}</td>
-                                    </tr>
-                                    <tr>
-                                        <td className="title">Address:</td>
-                                        <td className="address">{formattedAddress}</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <table className="payment">
-                                <thead>
-                                    <tr><th><h3 className="table-title">Payment</h3></th></tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td className="title">Method:</td>
-                                        <td className="method">{paymentMethod}</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <div className="order-items">
-                                <h3 className="table-title">Order Items</h3>
+                    <h1 className="mb-2">Place Order</h1>
+                    <div className="row">
+                        <div className="col-lg-8">
+                            <div className="shipping col-lg-10">
+                                <table className="table table-striped">
+                                    <thead>
+                                        <tr><th className="px-0"><h3>Shipping</h3></th></tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row">Name:</th>
+                                            <td>{user.name}</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Email:</th>
+                                            <td>{user.email}</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Address:</th>
+                                            <td>{formattedAddress}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div className="payment col-lg-10">
+                                <table className="table table-striped">
+                                    <thead>
+                                        <tr><th className="px-0"><h3>Payment</h3></th></tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row">Method:</th>
+                                            <td>{paymentMethod}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div className="col-lg-10">
+                                <h3 className="mb-2 mt-4">Order Items</h3>
                                 {orderItemsMarkup}
                             </div>
                         </div>
-                        <div className="summary-container">
-                            <h3>Order Summary</h3>
-                            <table className="summary">
+                        <div className="col-lg-4">
+                            <table className="summary table table-striped">
+                                <thead>
+                                        <tr><th className="px-0"><h3 className="table-title">Order Summary</h3></th></tr>
+                                    </thead>
                                 <tbody>
                                     <tr>
-                                        <td className="title">Item(s) Subtotal</td>
-                                        <td className="order-subtotal">&#8377; {totalPrice.toLocaleString('en-IN')}</td>
+                                        <td>Item(s) Subtotal</td>
+                                        <td>&#8377; {totalPrice.toLocaleString('en-IN')}</td>
                                     </tr>
                                     <tr>
-                                        <td className="title">Shipping</td>
-                                        <td className="order-shipping">&#8377; {shippingPrice}</td>
+                                        <td>Shipping</td>
+                                        <td>&#8377; {shippingPrice}</td>
                                     </tr>
                                     <tr>
-                                        <td className="title">Tax</td>
-                                        <td className="order-tax">&#8377; {totalTaxPrice.toLocaleString('en-IN')}</td>
+                                        <td>Tax</td>
+                                        <td>&#8377; {totalTaxPrice.toLocaleString('en-IN')}</td>
                                     </tr>
                                     <tr>
-                                        <td className="title">Grand Total</td>
-                                        <td className="order-total">&#8377; {grandTotal.toLocaleString('en-IN')}</td>
+                                        <td><strong>Grand Total</strong></td>
+                                        <td><strong>&#8377; {grandTotal.toLocaleString('en-IN')}</strong></td>
                                     </tr>
                                 </tbody>
                             </table>
                             { !showPaypalButton ? 
-                                <button 
+                                <div className="d-grid gap-2">
+                                    <button 
                                     onClick={onProceedToPayButtonClicked}
-                                    className="btn-proceed-to-pay btn-primary"
-                                >
-                                    Proceed to Pay
-                                </button> :
+                                    className="btn btn-primary"
+                                    >
+                                        Proceed to Pay
+                                    </button>
+                                </div> :
                                 <PayPalButton 
                                     amount={(grandTotal * 0.0136).toFixed(2)} 
                                     onSuccess={onPaymentSuccess}

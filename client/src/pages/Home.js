@@ -29,9 +29,9 @@ function Home({ match }) {
 
     return (
         <section className="product-list">
-            <div className="container" style={loading ? {display: "flex", placeItems: "center"} : {}}>
+            <div className="container product-container mx-4" style={loading ? {display: "flex", placeItems: "center"} : {}}>
                 { loading ? <Loader /> : match.url.includes("search") && productList.length === 0 
-                ? <h1>No Results</h1> : productListMarkup }
+                ? <h1>No Results</h1> : <div className="row">{productListMarkup}</div> }
             </div>
         </section>
     )

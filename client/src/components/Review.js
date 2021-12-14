@@ -8,13 +8,15 @@ function Review({ review }) {
     }
 
     return (
-        <div className="review">
-            <div className="review-header">
-                <h3 className="name">{review.user.name}</h3> 
-                <p className="rating" style={ratingStyles}>{review.rating} <i className="fas fa-star"></i></p>
+        <div className="mb-2">
+            <div className="border bg-light p-2">
+                <div>
+                    <h3 className="fs-5 mb-2">{review.user.name}</h3> 
+                    <p className="d-inline-block text-white fs-6 px-2 py-1" style={ratingStyles}>{review.rating} <i className="fas fa-star"></i></p>
+                </div>
+                <p className="mt-2 text-break">{review.comment}</p>
+                <p className="text-black-50 font-monospace fs-6">Reviewed on {formattedDate}</p>
             </div>
-            <p className="comment">{review.comment}</p>
-            <p className="createdAt">Reviewed on {formattedDate}</p>
         </div>
     )
 }

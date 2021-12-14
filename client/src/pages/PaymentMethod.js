@@ -27,20 +27,29 @@ function PaymentMethod({ history }) {
 
     return (
         <section className="payment-method">
-            <div className="container">
-                <h1 className="section-title">Payment Method</h1>
-                <form onSubmit={onPaymentMethodFormSubmitted}>
-                    <h3 className="form-title">Select Method</h3>
-                    <div className="paypal" onChange={(e) => setPaymentMethod(e.target.value)}>
+            <div className="container col-md-8 col-lg-4">
+                <h1 className="my-3 fs-2">Payment Method</h1>
+                <form className="border p-3" onSubmit={onPaymentMethodFormSubmitted}>
+                    <h3 className="form-title mb-3">Select Method</h3>
+                    <div class="form-check mb-2" onChange={(e) => setPaymentMethod(e.target.value)}>
                         <input 
+                            class="form-check-input" 
                             type="radio" 
                             name="method" 
-                            value="PayPal" 
-                            defaultChecked     
+                            id="paypal" 
+                            checked 
                         />
-                        <label>Paypal or Credit Card</label>
+                        <label class="form-check-label" for="paypal">
+                            PayPal or Credit Card
+                        </label>
                     </div>
-                    <button className="btn-payment-continue btn-primary" type="submit">Continue</button>
+                    <div class="form-check mb-2">
+                        <input class="form-check-input" type="radio" name="method" id="debitcard" disabled />
+                        <label class="form-check-label" for="debitcard">
+                            Debit Card
+                        </label>
+                    </div>
+                    <button className="btn btn-primary mt-2" type="submit">Continue</button>
                 </form>
             </div>
         </section>

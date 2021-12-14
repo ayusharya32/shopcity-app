@@ -49,48 +49,63 @@ function Profile() {
     return (
         <section className="profile">
             {loading ? <Loader /> :
-                <div className="container">
-                    <h1 className="section-title">My Profile</h1>
-                    <form onSubmit={onUpdateProfileFormSubmitted}>
-                        <div className="name">
-                            <label htmlFor="name">Name</label>
+                <div className="container col-11 col-md-9 col-lg-6 mt-3">
+                    <h1 className="fs-1">My Profile</h1>
+                    <form onSubmit={onUpdateProfileFormSubmitted} className="mt-4">
+                        <div class="mb-3">
+                            <label htmlFor="name" class="form-label fw-bold">Name</label>
                             <input 
-                                name="name" 
+                                name="name"
                                 type="text" 
+                                class="form-control" 
+                                id="name" 
                                 value={name}
-                                onChange={(e) => setName(e.target.value)}     
+                                onChange={(e) => setName(e.target.value)}  
                             />
                         </div>
-                        <div className="email">
-                            <label htmlFor="email">Email</label>
+                        <div class="mb-3">
+                            <label htmlFor="email" class="form-label fw-bold">Email address</label>
                             <input 
-                                name="email" 
-                                type="text" 
-                                value={email} 
-                                disabled     
+                                name="email"
+                                type="email" 
+                                class="form-control" 
+                                id="email" 
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}  
+                                disabled
                             />
                         </div>
-                        <div className="password">
-                            <label htmlFor="password">Password</label>
+                        <div class="mb-3">
+                            <label htmlFor="password" class="form-label fw-bold">Password</label>
                             <input 
-                                name="password" 
+                                name="password"
                                 type="password" 
-                                placeholder="Password" 
+                                class="form-control" 
+                                id="password" 
                                 value={password}
-                                onChange={(e) => setPassword(e.target.value)}
+                                onChange={(e) => setPassword(e.target.value)}  
                             />
+                            <div id="passwordHelpBlock" class="form-text">
+                                Your password must be greater than 6 characters with at least one uppercase, one lowercase and one special character.
+                            </div>
                         </div>
-                        <div className="confirm-password">
-                            <label htmlFor="confirm-password">Confirm Password</label>
+                        <div class="mb-3">
+                            <label htmlFor="confirmPassword" class="form-label fw-bold">Confirm Password</label>
                             <input 
-                                name="confirm-password" 
+                                name="confirmPassword"
                                 type="password" 
-                                placeholder="Confirm Password" 
+                                class="form-control" 
+                                id="confirmPassword" 
                                 value={confirmPassword}
-                                onChange={(e) => setConfirmPassword(e.target.value)}
+                                onChange={(e) => setConfirmPassword(e.target.value)}  
                             />
                         </div>
-                        <button className="btn-update-profile btn-primary" type="submit">Update</button>
+                        <button 
+                            className="btn btn-primary" 
+                            type="submit"
+                            disabled={loading}>
+                            Update
+                        </button>
                     </form>
                 </div>
             }

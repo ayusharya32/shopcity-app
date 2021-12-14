@@ -15,13 +15,13 @@ function Product({ product }) {
     }
 
     return (
-        <div className="product" onClick={onProductClicked}>
-            <div className="img-container">
-                <img src={product.imageUrl} alt={product.name} />
-            </div>
-            <div className="content">
-                <h3 className="title">{product.name}</h3>
-                <div className="footer">
+        <div className="col-md-6 col-xl-4 p-2" onClick={onProductClicked}>
+            <div className="product h-100" onClick={onProductClicked}>
+                <div className="img-container">
+                    <img src={product.imageUrl} alt={product.name} />
+                </div>
+                <div className="content">
+                    <h3 className="title">{product.name}</h3>
                     <p className="price">&#8377; {product.price.toLocaleString('en-IN')}</p>
                     <div className="feedback">
                         <p className="rating" style={ratingStyles}>{product.rating} <i className="fas fa-star"></i></p>

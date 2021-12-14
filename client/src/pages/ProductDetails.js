@@ -75,30 +75,31 @@ function ProductDetails({ match }) {
         <section className="product-details">
             { loading ? <Loader /> :
                 product && 
-                <div className="container">
-                    <div className="flex-container">
-                        <div className="img-container">
-                            <img src={product.imageUrl} alt={product.name} />
+                <div className="container px-5">
+                    <div className="flex-container row">
+                        <div className="img-container col-12 col-lg-6">
+                            <img class="img-fluid" src={"http://localhost:5000/uploads/productImage1630487018507.jpg"} alt={product.name} />
                         </div>
-                        <div className="purchase-table">
-                            <table className="purchase">
+                        <div className="purchase-table col-12 col-lg-6 py-2 container">
+                            <table className="table table-striped table-bordered">
                                 <tbody>
                                     <tr>
-                                        <td className="title">Price:</td>
-                                        <td className="price">&#8377; {product.price.toLocaleString('en-IN')}</td>
-                                    </tr>
-                                    <tr>
-                                        <td className="title">Status:</td>
-                                        <td 
-                                            className="status"
-                                            style={isProductInStock ? {color: "green"} : {color: "red"}}
-                                        >
-                                            {productInStockMarkup}
+                                        <th scope="row">Price:</th>
+                                        <td>
+                                            <strong>&#8377; {product.price.toLocaleString('en-IN')}</strong>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td className="title">Quantity:</td>
-                                        <td className="quantity">
+                                        <th scope="row">Status:</th>
+                                        <td 
+                                            style={isProductInStock ? {color: "green"} : {color: "red"}}
+                                        >
+                                            <strong>{productInStockMarkup}</strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Quantity:</th>
+                                        <td>
                                             <select
                                                 value={quantity}
                                                 onChange={(e) => setQuantity(e.target.value)}    
@@ -108,14 +109,14 @@ function ProductDetails({ match }) {
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td className="add-to-cart" colSpan="2">
+                                        <td colSpan="2" className="text-center">
                                             {userLoading ? <Loader /> : 
                                                 <button 
                                                 onClick={onAddToCartButtonClicked}
-                                                className="btn-add-to-cart btn-primary"
+                                                className="btn btn-primary"
                                                 disabled={!isProductInStock || isProductInCart}
                                             >
-                                                {isProductInCart ? "Product Already In Cart" : "Add To Cart"}
+                                                {isProductInCart ? "Product In Cart" : "Add To Cart"}
                                             </button>
                                             }
                                         </td>
@@ -124,16 +125,17 @@ function ProductDetails({ match }) {
                             </table>
                         </div>
                     </div>
-                    <div className="content">
-                        <h1 className="title">{product.name}</h1>
-                        <h3 className="brand">{product.brand}</h3>
-                        <p className="description">{product.description}</p>
-                        <p className="rating" style={ratingStyles}>
+                    <div>
+                        <h1 className="mt-3 fs-3 fw-bold pb-1">{product.name}</h1>
+                        <h3 className="fs-3 fw-bold text-black-50">{product.brand}</h3>
+                        <p className="py-3">{product.description}</p>
+                        <p className="mb-2 py-1 px-2 d-inline-block text-white" style={ratingStyles}>
                             {product.rating} <i className="fas fa-star"></i>
                         </p>
+                        <hr />
                     </div>
-                    <div className="reviews">
-                        <h1 className="heading">Reviews ({product.reviews.length})</h1>
+                    <div>
+                        <h1 className="fw-bold mt-1 mb-2 text-primary">Reviews ({product.reviews.length})</h1>
                         { reviewsMarkup }
                         { !isProductReviewed && <CreateReviewDialog productId={productId} />}
                     </div>

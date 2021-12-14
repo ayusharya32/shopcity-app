@@ -48,41 +48,51 @@ function Header() {
 
     return (
         <header>
-            <nav>
-                <div className="nav-left">
-                    <p>Shop City</p>
-                </div>
-                <div className="nav-center">
-                    <form onSubmit={onSearchFormSubmitted}>
+            <nav class="navbar navbar-expand-lg navbar-light bg-light custom-nav">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="/">Shop City</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    { (isAuthenticated && user) && (
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle ms-1" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"> {user.name} </a>
+                                <ul class="dropdown-menu mb-1" aria-labelledby="navbarDropdown">
+                                    <li><Link class="dropdown-item" to="/profile">My Profile</Link></li>
+                                    <li><Link class="dropdown-item" to="/orders">My Orders</Link></li>
+                                    <li><hr class="dropdown-divider" /></li>
+                                    <li><button className="dropdown-item" onClick={onLogOutButtonClicked}>Log Out</button></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <button 
+                                    onClick={onCartButtonClicked}
+                                    className="btn btn-success ms-2"
+                                >
+                                    <i className="fas fa-shopping-cart"></i> Cart ({totalItems})
+                                </button>
+                            </li>
+                        </ul>
+                    )}
+                    <form class="d-flex" onSubmit={onSearchFormSubmitted}>
                         <input 
                             value={searchKeyword}
                             onChange={(e) => setSearchKeyword(e.target.value)}
-                            type="text" 
+                            class="form-control me-2" 
+                            type="search" 
                             placeholder="Search.." 
+                            aria-label="Search" 
                         />
-                        <button className="btn-primary" type="submit"><i className="fas fa-search"></i></button>
-                    </form>
-                </div>
-                { (isAuthenticated && user) && (
-                    <div className="nav-right">
-                        <div className="dropdown">
-                            <button className="btn-primary btn-dropdown">
-                                {user.name} <span><i className="fas fa-angle-down"></i></span>
-                            </button>
-                            <div className="dropdown-content">
-                                <Link to="/profile">My Profile</Link>
-                                <Link to="/orders">My Orders</Link>
-                                <button onClick={onLogOutButtonClicked}>Log Out</button>
-                            </div>
-                        </div>
                         <button 
-                            onClick={onCartButtonClicked}
-                            className="btn-primary btn-cart"
-                        >
-                            <i className="fas fa-shopping-cart"></i> ({totalItems})
+                            class="btn btn-success" 
+                            type="submit">
+                            Search
                         </button>
+                    </form>
                     </div>
-                )}
+                </div>
             </nav>
         </header>
     )

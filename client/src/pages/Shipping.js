@@ -49,54 +49,66 @@ function Shipping({ history }) {
 
     return (
         <section className="shipping">
-            <div className="container">
-                <h1 className="section-title">Shipping Address</h1>
-                <form onSubmit={onShippingFormSubmitted}>
-                    <div className="address">
-                        <label htmlFor="address">Address</label>
+            <div className="container col-xl-7">
+                <h1 className="mt-4 ms-2">Shipping Address</h1>
+                <form onSubmit={onShippingFormSubmitted} className="mt-4 mx-2 border p-4">
+                    <div class="mb-3">
+                        <label htmlFor="address" class="form-label fw-bold">Address</label>
                         <input 
+                            name="address"
+                            type="text" 
+                            class="form-control" 
+                            id="address" 
+                            placeholder="Enter Address"
                             value={address}
-                            onChange={(e) => setAddress(e.target.value)}
-                            name="address" 
-                            type="text" 
-                            placeholder="Enter Address" 
+                            onChange={(e) => setAddress(e.target.value)}  
                             required
                         />
                     </div>
-                    <div className="city">
-                        <label htmlFor="city">City</label>
+                    <div class="mb-3">
+                        <label htmlFor="city" class="form-label fw-bold">City</label>
                         <input 
+                            name="city"
+                            type="text" 
+                            class="form-control" 
+                            id="city" 
+                            placeholder="Enter City"
                             value={city}
-                            onChange={(e) => setCity(e.target.value)}
-                            name="city" 
-                            type="text" 
-                            placeholder="Enter City" 
+                            onChange={(e) => setCity(e.target.value)}  
                             required
                         />
                     </div>
-                    <div className="state">
-                        <label htmlFor="state">State</label>
+                    <div class="mb-3">
+                        <label htmlFor="state" class="form-label fw-bold">State</label>
                         <input 
-                            value={state}
-                            onChange={(e) => setState(e.target.value)}
-                            name="state" 
+                            name="state"
                             type="text" 
-                            placeholder="Enter State" 
+                            class="form-control" 
+                            id="state" 
+                            placeholder="Enter State"
+                            value={state}
+                            onChange={(e) => setState(e.target.value)}  
                             required
                         />
                     </div>
-                    <div className="pin-code">
-                        <label htmlFor="pin-code">Pin Code</label>
+                    <div class="mb-3">
+                        <label htmlFor="pin-code" className="form-label fw-bold">Pin Code</label>
                         <input 
                             value={pincode}
                             onChange={(e) => setPincode(e.target.value)}
                             name="pin-code" 
+                            className="form-control"
                             type="number" 
+                            id="pinCode"
                             placeholder="Enter Pin Code" 
                             required
                         />
                     </div>
-                    <button className="btn-shipping-continue btn-primary" type="submit">Continue</button>
+                    <button 
+                        className="btn btn-primary" 
+                        type="submit">
+                        Continue
+                    </button>
                 </form>
             </div>
         </section>

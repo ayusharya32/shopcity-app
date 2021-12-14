@@ -24,26 +24,28 @@ function Cart({ history }) {
     }
 
     return (
-        <section className="cart">
+        <section className="mb-3">
             { user && user.cartItems.length === 0 ? 
-                <div className="cart-empty">
-                    <h1>Cart is Empty</h1>
-                    <Link to="/">Continue Shopping</Link>
+                <div className="d-flex flex-column justify-content-center align-items-center">
+                    <h1 className="my-4">Cart is Empty</h1>
+                    <Link className="btn btn-primary" to="/">Continue Shopping</Link>
                 </div> :   
                 <div className="container">
-                <h1>Shopping Cart</h1>
-                <div className="cart-content">
-                    <div className="cart-products-list">
+                <h1 className="my-3 ms-1">Shopping Cart</h1>
+                <div className="row">
+                    <div className="col-lg-9">
                         {loading ? <Loader /> : cartItemsMarkup}
                     </div>
-                    <div className="subtotal">
-                        <h1>Subtotal({totalItems} items): <br /> &#8377; {totalPrice.toLocaleString('en-IN')}</h1>
-                        <button 
-                            onClick={onProceedToCheckoutButtonClicked}
-                            className="btn-proceed-to-checkout btn-primary"
-                        >
-                            Proceed to Checkout
-                        </button>
+                    <div className="container col-lg-3 px-4">
+                        <div className="border p-3 bg-light text-center">
+                            <h1 className="fs-4"><strong>Subtotal({totalItems} items): <br /> &#8377; {totalPrice.toLocaleString('en-IN')}</strong></h1>
+                            <button 
+                                onClick={onProceedToCheckoutButtonClicked}
+                                className="btn btn-primary mt-3 text-center"
+                            >
+                                Proceed to Checkout
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>

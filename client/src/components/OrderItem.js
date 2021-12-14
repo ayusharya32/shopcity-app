@@ -6,15 +6,15 @@ function OrderItem({ orderItem }) {
     const totalItemPrice = product.price * quantity
 
     return (
-        <div className="order-item">
-            <div className="item-img">
-                <img src={product.imageUrl} alt={product.name} />
+        <div className="border mx-1 mb-2 p-2 row">
+            <div className="col-3">
+                <img className="img-fluid" src={product.imageUrl} alt={product.name} />
             </div>
-            <div className="item-content">
-                <h3 className="item-name">{product.name}</h3>
-                <p className="item-qty">Quantity: {quantity}</p>
-                <p className="item-price">Item Price: &#8377; {product.price}</p>
-                <p className="total">Total: &#8377; {totalItemPrice}</p>
+            <div className="col-9">
+                <h3 className="fs-5 fw-bold">{product.name}</h3>
+                <p>Quantity: {quantity}</p>
+                <p>Item Price: &#8377; {product.price}</p>
+                <p><strong className="text-primary">Total: &#8377; {totalItemPrice}</strong></p>
             </div>
         </div>
     )

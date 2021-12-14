@@ -45,36 +45,42 @@ function Login({ history }) {
     }
 
     return (
-        <section className="login">
-            <div className="login-content">
-                <h1>Shop City</h1>
+        <section className="login"> 
+            <div className="login-content col-9 col-md-6 col-xxl-4 p-3 mx-5">
+                <h1 className="text-center py-2">Shop City</h1>
                 { loading ? <Loader /> :
-                    <form onSubmit={onLoginFormSubmitted}>            
-                        <input 
-                            onChange={(e) => setEmail(e.target.value)}
-                            value={email}
-                            type="text" 
-                            placeholder="Email" 
-                            required
-                        />                
-                        <input 
-                            onChange={(e) => setPassword(e.target.value)}
-                            value={password}
-                            type="password" 
-                            placeholder="Password" 
-                            required
-                        /> 
-                        <button 
-                            disabled={loading} 
-                            className="btn-login btn-primary" 
-                            type="submit">
-                            Log In
-                        </button>               
+                    <form onSubmit={onLoginFormSubmitted}>
+                        <div className="mb-3">
+                            <input 
+                                onChange={(e) => setEmail(e.target.value)}
+                                type="email" 
+                                className="form-control"
+                                placeholder="Email"
+                                required
+                            />
+                        </div>
+                        <div className="mb-3">
+                            <input 
+                                onChange={(e) => setPassword(e.target.value)}
+                                type="password" 
+                                className="form-control" 
+                                placeholder="Password"
+                                required
+                            />
+                        </div>
+                        <div className="text-center py-1  d-grid gap-2">
+                            <button 
+                                disabled={loading}
+                                type="submit" 
+                                className="btn btn-primary">
+                                Log In
+                            </button>
+                        </div>
                     </form>
                 }
             </div>
-            <div className="sign-up">
-                <p>
+            <div className="sign-up container col-9 col-md-6 col-xxl-4 my-4 py-3">
+                <p className="text-center">
                     Don't have an account? <Link to="/register">Sign up</Link>
                 </p>
             </div>

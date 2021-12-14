@@ -48,45 +48,55 @@ function Register({ history }) {
 
     return (
         <section className="register">
-            <div className="container">
-                <h1>Shop City</h1>
+            <div className="register-content col-9 col-md-6 col-xxl-4 p-3 mx-5">
+                <h1 className="text-center mb-3">Shop City</h1>
                 { loading ? <Loader /> :
                     <form onSubmit={onRegisterFormSubmitted}>
-                        <input 
-                            onChange={(e) => setName(e.target.value)}
-                            value={name}
-                            type="text" 
-                            placeholder="Name" 
-                            required
-                        />
-                        <input 
-                            onChange={(e) => setEmail(e.target.value)}
-                            value={email}
-                            type="text" 
-                            placeholder="Email" 
-                            required
-                        />
-                        <input 
-                            onChange={(e) => setPassword(e.target.value)}
-                            value={password}
-                            type="password" 
-                            placeholder="Password" 
-                            required
-                        />
-                        <input 
-                            onChange={(e) => setConfirmPassword(e.target.value)}
-                            value={confirmPassword}
-                            type="password" 
-                            placeholder="Confirm Password"
-                            required 
-                        />
-                        <button 
-                            disabled={loading} 
-                            className="btn-register btn-primary" 
-                            type="submit">
-                            Register
-                        </button>                
-                    </form>
+                        <div className="mb-3">
+                            <input 
+                                onChange={(e) => setName(e.target.value)}
+                                type="text" 
+                                className="form-control"
+                                placeholder="Name"
+                                required
+                            />
+                        </div>
+                        <div className="mb-3">
+                            <input 
+                                onChange={(e) => setEmail(e.target.value)}
+                                type="email" 
+                                className="form-control"
+                                placeholder="Email"
+                                required
+                            />
+                        </div>
+                        <div className="mb-3">
+                            <input 
+                                onChange={(e) => setPassword(e.target.value)}
+                                type="password" 
+                                className="form-control" 
+                                placeholder="Password"
+                                required
+                            />
+                        </div>
+                        <div className="mb-3">
+                            <input 
+                                onChange={(e) => setConfirmPassword(e.target.value)}
+                                type="password" 
+                                className="form-control"
+                                placeholder="Confirm Password"
+                                required
+                            />
+                        </div>
+                        <div className="text-center py-1 d-grid gap-2">
+                            <button 
+                                disabled={loading}
+                                type="submit" 
+                                className="btn btn-primary">
+                                Sign Up
+                            </button>
+                        </div>
+                    </form>              
                 }
             </div>
         </section>

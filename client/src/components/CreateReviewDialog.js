@@ -49,7 +49,11 @@ function CreateReviewDialog({ productId }) {
 
     return (
         <>
-            <button onClick={() => setShowDialog(true)} className="btn-review btn-primary">Write a Review</button>
+            <button 
+                onClick={() => setShowDialog(true)} 
+                className="btn btn-primary mt-3">
+                Write a Review
+            </button>
             { showDialog && 
                 <div className="modal-overlay" onClick={handleModalClose}>
                     <div className="create-review-dialog">
@@ -65,7 +69,7 @@ function CreateReviewDialog({ productId }) {
                                         { getRatingOptionsMarkup() }
                                     </div>
                                 </div>
-                                <button className="btn-primary">Post Review</button>
+                                <button className="btn btn-primary">Post Review</button>
                             </form>
                         }
                     </div>
