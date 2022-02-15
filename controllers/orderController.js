@@ -56,6 +56,8 @@ async function createOrder(req, res) {
         })
 
         order.orderItems.forEach(async (item) => {
+            console.info(item)
+            console.error({ _id: item.product._id })
             const product = await Product.findOne({ _id: item.product._id })
             const stockLeft = product.stockCount - item.quantity
             product.stockCount = stockLeft > 0 ? stockLeft : 0
