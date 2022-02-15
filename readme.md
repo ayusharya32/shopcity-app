@@ -8,10 +8,9 @@ This app is built using ***MongoDB, ExpressJS, NodeJS, and React*** and is hoste
 
 - On Client side, it uses ***Redux*** for state management, ***Axios*** as HTTP client and ***react-paypal-button-v2*** for online payments using PayPal.
 
-- On Server side, it uses ***mongoose*** as ORM for MongoDB, ***bcrypt*** for hashing passwords and ***multer*** to upload images to server.
+- On Server side, it uses ***mongoose*** as ORM for MongoDB, ***bcrypt*** for hashing passwords and ***multer*** to upload images to server. 
 
 \
-
 Paypal Sandbox account details for completing payment:
 * Email: sb-ta2vj5367268@personal.example.com
 * Password: 4)5kH2Rl
